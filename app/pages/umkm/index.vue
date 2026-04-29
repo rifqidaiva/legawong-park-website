@@ -70,11 +70,11 @@ const categories = getUmkmCategories()
         <div class="mt-4 flex flex-wrap gap-2">
           <UBadge
             v-for="product in item.products"
-            :key="product"
+            :key="product.name"
             color="neutral"
             variant="subtle"
             size="sm">
-            {{ product }}
+            {{ product.name }}
           </UBadge>
         </div>
 
