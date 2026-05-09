@@ -26,24 +26,27 @@ const featuredStats = [
 const highlightCards = ref([
   {
     title: "Pilih spot",
-    description: "Lihat pilihan gazebo, pendopo, dan area terbuka yang bisa disesuaikan dengan acara Anda.",
+    description:
+      "Lihat pilihan gazebo, pendopo, dan area terbuka yang bisa disesuaikan dengan acara Anda.",
     icon: "i-lucide-map-pinned",
   },
   {
     title: "Cek kapasitas",
-    description: "Setiap lokasi menampilkan kapasitas, durasi sewa, dan fasilitas agar booking lebih cepat.",
+    description:
+      "Setiap lokasi menampilkan kapasitas, durasi sewa, dan fasilitas agar booking lebih cepat.",
     icon: "i-lucide-users",
   },
   {
     title: "Konfirmasi booking",
-    description: "Hubungi pengelola melalui kontak yang tersedia untuk memastikan jadwal dan kebutuhan acara.",
+    description:
+      "Hubungi pengelola melalui kontak yang tersedia untuk memastikan jadwal dan kebutuhan acara.",
     icon: "i-lucide-calendar-check-2",
   },
 ])
 </script>
 
 <template>
-  <UContainer>
+  <div>
     <UTheme
       :ui="{
         button: {
@@ -78,11 +81,14 @@ const highlightCards = ref([
       </UPageHero>
     </UTheme>
 
-    <UPageGrid id="ringkasan">
-      <UPageCard
-        v-for="(card, index) in highlightCards"
-        :key="index"
-        v-bind="card" />
-    </UPageGrid>
-  </UContainer>
+    <UContainer>
+      <UPageGrid id="ringkasan">
+        <UPageCard
+          spotlight
+          v-for="(card, index) in highlightCards"
+          :key="index"
+          v-bind="card" />
+      </UPageGrid>
+    </UContainer>
+  </div>
 </template>

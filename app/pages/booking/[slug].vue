@@ -17,7 +17,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <UContainer class="py-10 sm:py-12">
+  <div>
     <UButton
       to="/booking"
       icon="i-lucide-arrow-left"
@@ -28,21 +28,15 @@ useSeoMeta({
 
     <div
       v-if="booking"
-      class="grid gap-6 lg:gap-8 lg:grid-cols-3 lg:items-start">
+      class="grid gap-6 lg:gap-8 lg:grid-cols-3">
       <div class="space-y-6 lg:col-span-2">
         <UCard>
-          <template #header>
-            <p class="text-sm font-semibold uppercase tracking-wide text-primary">Detail booking</p>
-            <h1 class="mt-2 text-3xl font-bold tracking-tight text-highlighted sm:text-4xl">
-              {{ booking.name }}
-            </h1>
-          </template>
+          <UPageHeader
+            :title="booking.name"
+            :description="booking.description"
+            headline="DETAIL BOOKING" />
 
-          <p class="text-sm leading-6 text-muted sm:text-base">
-            {{ booking.description }}
-          </p>
-
-          <div class="mt-4 flex flex-wrap gap-2">
+          <BadgeContainer class="mt-4">
             <UBadge
               color="primary"
               variant="soft">
@@ -58,7 +52,7 @@ useSeoMeta({
               variant="soft">
               Durasi: {{ booking.duration }}
             </UBadge>
-          </div>
+          </BadgeContainer>
         </UCard>
 
         <UCard>
@@ -74,21 +68,20 @@ useSeoMeta({
               :next="{ variant: 'solid' }"
               :items="booking.images"
               class="w-full">
-              <img
-                :src="item"
-                :alt="`Foto ${booking.name}`"
-                class="h-full w-full rounded-lg aspect-video object-cover"
-                loading="lazy" />
+              <ImageContainer>
+                <Image
+                  :src="item"
+                  :alt="`Foto ${booking.name}`" />
+              </ImageContainer>
             </UCarousel>
-            <div
-              v-else-if="booking.images.length === 1"
-              class="relative aspect-video overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800">
-              <img
+
+            <ImageContainer v-else>
+              <Image
+                v-if="booking.images && booking.images[0]"
                 :src="booking.images[0]"
-                :alt="`Foto ${booking.name}`"
-                class="h-full w-full object-cover" />
-            </div>
-            <NoImage v-else />
+                :alt="`Foto ${booking.name}`" />
+              <ImageEmpty v-else />
+            </ImageContainer>
           </div>
         </UCard>
 
@@ -100,7 +93,7 @@ useSeoMeta({
             </h2>
           </template>
 
-          <div class="flex flex-wrap gap-2">
+          <BadgeContainer>
             <UBadge
               v-for="facility in booking.facilities"
               :key="facility"
@@ -108,7 +101,7 @@ useSeoMeta({
               variant="soft">
               {{ facility }}
             </UBadge>
-          </div>
+          </BadgeContainer>
 
           <div class="mt-5 grid gap-4 sm:grid-cols-2">
             <div>
@@ -123,8 +116,8 @@ useSeoMeta({
         </UCard>
       </div>
 
-      <div class="space-y-6 lg:col-span-1">
-        <UCard class="order-first lg:order-last">
+      <div>
+        <UCard>
           <template #header>
             <h2 class="text-base font-semibold text-highlighted">Ringkasan booking</h2>
           </template>
@@ -170,5 +163,5 @@ useSeoMeta({
         </UCard>
       </div>
     </div>
-  </UContainer>
+  </div>
 </template>

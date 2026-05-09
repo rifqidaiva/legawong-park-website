@@ -5,38 +5,36 @@ const categories = getBookingCategories()
 </script>
 
 <template>
-  <UContainer class="py-10 sm:py-12">
+  <div>
     <UPageHeader
       class="max-w-3xl"
       title="Pilih tempat terbaik untuk kegiatan Anda di Taman Legawong."
       description="Temukan gazebo, pendopo, area terbuka, dan panggung yang bisa dipesan sesuai kebutuhan acara. Setiap lokasi menampilkan kapasitas, durasi sewa, fasilitas, dan kontak pengelola agar proses booking lebih cepat."
       headline="DAFTAR BOOKING TEMPAT" />
 
-    <div class="mt-8 flex flex-wrap gap-2">
+    <BadgeContainer class="mt-4">
       <UBadge
         v-for="category in categories"
         :key="category"
         color="neutral"
-        variant="soft"
-        class="rounded-full px-3 py-1 font-semibold">
+        variant="soft">
         {{ category }}
       </UBadge>
-    </div>
+    </BadgeContainer>
 
     <div class="mt-8 grid gap-6 md:grid-cols-2">
       <UCard
         v-for="item in bookingSpaces"
-        :key="item.slug"
-        class="h-full">
+        :key="item.slug">
         <template #header>
           <div class="space-y-4">
-            <div class="overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
-              <img
+            <ImageContainer>
+              <Image
+                v-if="item.images && item.images[0]"
                 :src="item.images[0]"
-                :alt="`Foto ${item.name}`"
-                class="aspect-video w-full object-cover"
-                loading="lazy" />
-            </div>
+                :alt="`Foto ${item.name}`" />
+              <ImageEmpty v-else />
+            </ImageContainer>
 
             <div class="flex items-start justify-between gap-3">
               <div>
@@ -65,7 +63,7 @@ const categories = getBookingCategories()
           {{ item.description }}
         </p>
 
-        <div class="mt-4 flex flex-wrap gap-2">
+        <BadgeContainer class="mt-4">
           <UBadge
             v-for="facility in item.facilities"
             :key="facility"
@@ -74,7 +72,7 @@ const categories = getBookingCategories()
             size="sm">
             {{ facility }}
           </UBadge>
-        </div>
+        </BadgeContainer>
 
         <div class="mt-5 grid gap-3 text-sm sm:grid-cols-2">
           <div>
@@ -102,5 +100,5 @@ const categories = getBookingCategories()
         </template>
       </UCard>
     </div>
-  </UContainer>
+  </div>
 </template>

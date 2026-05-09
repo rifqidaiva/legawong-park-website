@@ -28,9 +28,7 @@ export const bookingSpaces: BookingSpace[] = [
     price: 50000,
     address: "Zona utama Taman Legawong, dekat jalur pedestrian",
     images: [
-      "https://picsum.photos/640/640?random=31",
-      "https://picsum.photos/640/640?random=32",
-      "https://picsum.photos/640/640?random=33",
+
     ],
     facilities: ["Bangku", "Atap teduh", "Dekat akses air", "Cocok untuk keluarga"],
     hours: "08.00 - 17.00",
@@ -50,7 +48,7 @@ export const bookingSpaces: BookingSpace[] = [
     duration: "4 jam",
     price: 250000,
     address: "Bagian tengah taman, dekat area kumpul warga",
-    images: ["https://picsum.photos/640/640?random=34", "https://picsum.photos/640/640?random=35"],
+    images: ["https://picsum.photos/640/640?random=34"],
     facilities: ["Listrik", "Kursi tambahan", "Panggung kecil", "Area teduh"],
     hours: "08.00 - 20.00",
     contact: "+62 813-9000-2244",
