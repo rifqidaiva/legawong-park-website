@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", "@nuxtjs/supabase"],
   css: ["~/assets/css/main.css"],
   colorMode: {
     preference: "light",
@@ -19,6 +19,13 @@ export default defineNuxtConfig({
   router: {
     options: {
       scrollBehaviorType: "smooth",
+    },
+  },
+  supabase: {
+    redirectOptions: {
+      login: "/auth/login",
+      callback: "/auth/callback",
+      exclude: ["/", "/booking", "/booking/**"],
     },
   },
 })

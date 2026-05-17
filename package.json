@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "@nuxt/ui": "^4.7.0",
+    "@nuxtjs/supabase": "^2.0.8",
     "nuxt": "^4.4.2",
     "tailwindcss": "^4.2.4",
     "vue": "^3.5.33",
     "vue-router": "^5.0.6"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.108"
+    "@iconify-json/lucide": "^1.2.108",
+    "@iconify-json/simple-icons": "^1.2.82"
   }
 }
