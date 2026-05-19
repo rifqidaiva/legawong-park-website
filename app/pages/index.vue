@@ -1,48 +1,47 @@
 <script setup lang="ts">
 import type { ButtonProps } from "@nuxt/ui"
 
-const links = ref<ButtonProps[]>([
+import { facilities } from "~/data/facilities"
+
+const links = [
   {
-    label: "Lihat booking tempat",
-    to: "/booking",
-    icon: "i-lucide-calendar-range",
+    label: "Lihat daftar fasilitas",
+    to: "/fasilitas",
+    icon: "i-lucide-building-2",
     color: "primary",
   },
   {
-    label: "Lihat fasilitas",
-    to: "#ringkasan",
+    label: "Lihat highlight",
+    to: "#fasilitas",
     icon: "i-lucide-map-pinned",
     color: "neutral",
     variant: "outline",
   },
-])
+] satisfies ButtonProps[]
 
 const featuredStats = [
-  { label: "Spot siap booking", value: "4" },
-  { label: "Ukuran total", value: "150+" },
-  { label: "Pilihan durasi", value: "2-6 jam" },
+  { label: "Fasilitas utama", value: String(facilities.length) },
+  { label: "Tampilan", value: "Profil sederhana" },
+  { label: "Konten", value: "Foto + deskripsi" },
 ]
 
-const highlightCards = ref([
+const highlightCards = [
   {
-    title: "Pilih spot",
-    description:
-      "Lihat pilihan gazebo, pendopo, dan area terbuka yang bisa disesuaikan dengan acara Anda.",
+    title: "Kenali fasilitas",
+    description: "Lihat daftar tempat dan fasilitas yang ada di Taman Legawong dalam tampilan yang ringkas.",
     icon: "i-lucide-map-pinned",
   },
   {
-    title: "Cek ukuran",
-    description:
-      "Setiap lokasi menampilkan ukuran, durasi sewa, dan fasilitas agar booking lebih cepat.",
-    icon: "i-lucide-users",
+    title: "Buka halaman detail",
+    description: "Setiap fasilitas memiliki halaman sendiri dengan foto dan tulisan bergaya markdown.",
+    icon: "i-lucide-file-text",
   },
   {
-    title: "Konfirmasi booking",
-    description:
-      "Hubungi pengelola melalui kontak yang tersedia untuk memastikan jadwal dan kebutuhan acara.",
-    icon: "i-lucide-calendar-check-2",
+    title: "Jelajahi semua tempat",
+    description: "Gunakan halaman daftar fasilitas untuk melihat seluruh tempat yang tersedia.",
+    icon: "i-lucide-list-tree",
   },
-])
+]
 </script>
 
 <template>
@@ -54,18 +53,19 @@ const highlightCards = ref([
         },
       }">
       <UPageHero
-        title="Rencanakan kegiatan Anda di Taman Legawong."
-        description="Portal ini membantu pengunjung memilih dan memesan tempat di Taman Legawong untuk acara keluarga, komunitas, hingga kegiatan santai. Cek ukuran, fasilitas, dan kontak pengelola dalam satu tampilan yang mudah dijelajahi."
-        headline="Booking Tempat Taman Legawong"
+        title="Profil singkat Taman Legawong."
+        description="Website ini menampilkan tempat dan fasilitas di Taman Legawong secara sederhana, rapi, dan mudah dibaca. Setiap fasilitas punya halaman detail sendiri berisi foto dan deskripsi seperti artikel markdown."
+        headline="Fasilitas Taman Legawong"
         orientation="horizontal"
         :links="links">
-        <!-- <UCard class="overflow-hidden rounded-3xl border border-white bg-white shadow-lg">
+        <UCard class="overflow-hidden rounded-3xl border border-white bg-white shadow-lg dark:bg-slate-950">
           <div class="rounded-2xl bg-slate-950 p-6 text-white">
             <p class="text-sm uppercase tracking-wide text-amber-300">Taman Legawong</p>
-            <p class="mt-3 text-2xl font-bold">Booking cepat, acara lebih tertata</p>
+            <p class="mt-3 text-2xl font-bold">Tempat yang ditampilkan dengan jelas</p>
             <p class="mt-3 text-sm leading-6 text-slate-300">
-              Pilih lokasi sesuai kebutuhan acara, cek ketersediaan fasilitas, lalu hubungi
-              pengelola untuk konfirmasi jadwal kunjungan atau booking tempat.
+              Fokus situs ini adalah memperkenalkan fasilitas yang ada, bukan proses booking.
+              Pengunjung bisa membuka detail tiap fasilitas untuk melihat foto, ringkasan, dan
+              cerita singkatnya.
             </p>
             <div class="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               <div
@@ -77,18 +77,58 @@ const highlightCards = ref([
               </div>
             </div>
           </div>
-        </UCard> -->
+        </UCard>
       </UPageHero>
     </UTheme>
 
     <UContainer>
-      <UPageGrid id="ringkasan">
+      <UPageGrid id="fasilitas">
         <UPageCard
           spotlight
           v-for="(card, index) in highlightCards"
           :key="index"
           v-bind="card" />
       </UPageGrid>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <UCard
+          v-for="facility in facilities"
+          :key="facility.slug"
+          class="overflow-hidden">
+          <template #header>
+            <ImageContainer>
+              <Image
+                v-if="facility.heroImage"
+                :src="facility.heroImage"
+                :alt="`Foto ${facility.name}`" />
+              <ImageEmpty v-else />
+            </ImageContainer>
+          </template>
+
+          <div class="space-y-3">
+            <UBadge color="primary" variant="soft">
+              {{ facility.badge }}
+            </UBadge>
+            <h2 class="text-lg font-semibold text-highlighted">
+              {{ facility.name }}
+            </h2>
+            <p class="text-sm text-muted">
+              {{ facility.summary }}
+            </p>
+          </div>
+
+          <template #footer>
+            <UButton
+              :to="`/fasilitas/${facility.slug}`"
+              label="Buka halaman fasilitas"
+              icon="i-lucide-arrow-right"
+              trailing
+              color="neutral"
+              variant="solid"
+              size="sm" />
+          </template>
+        </UCard>
+      </div>
     </UContainer>
   </div>
 </template>

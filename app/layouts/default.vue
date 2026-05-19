@@ -4,16 +4,16 @@ import type { NavigationMenuItem } from "@nuxt/ui"
 const route = useRoute()
 const items = computed<NavigationMenuItem[]>(() => [
   {
-    label: "Reservasi",
-    to: "/reservation",
-    icon: "i-lucide-calendar-range",
-    active: route.path === "/reservation",
+    label: "Beranda",
+    to: "/",
+    icon: "i-lucide-home",
+    active: route.path === "/",
   },
   {
-    label: "Masuk",
-    to: "/auth",
-    icon: "i-lucide-user",
-    active: route.path === "/auth",
+    label: "Fasilitas",
+    to: "/fasilitas",
+    icon: "i-lucide-building-2",
+    active: route.path.startsWith("/fasilitas"),
   },
 ])
 </script>
@@ -37,17 +37,12 @@ const items = computed<NavigationMenuItem[]>(() => [
       <template #right>
         <UButton
           class="hidden lg:inline"
-          to="/booking"
+          to="/fasilitas"
           color="neutral"
           variant="link">
-          Reservasi
+          Daftar Fasilitas
         </UButton>
         <UColorModeButton />
-        <UButton
-          class="hidden lg:inline"
-          to="/auth"
-          icon="i-lucide-user"
-          variant="ghost" />
       </template>
       <template #body>
         <UNavigationMenu
