@@ -20,7 +20,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <div v-if="facility" class="space-y-10">
+  <div
+    v-if="facility"
+    class="space-y-10">
     <UPageHeader
       class="max-w-3xl"
       :title="facility.name"
@@ -63,7 +65,9 @@ useSeoMeta({
             </div>
 
             <div class="space-y-4 text-sm leading-7 text-muted">
-              <p v-for="paragraph in section.paragraphs" :key="paragraph">
+              <p
+                v-for="paragraph in section.paragraphs"
+                :key="paragraph">
                 {{ paragraph }}
               </p>
             </div>
@@ -71,7 +75,9 @@ useSeoMeta({
             <ul
               v-if="section.points && section.points.length"
               class="list-disc space-y-2 pl-5 text-sm leading-7 text-muted">
-              <li v-for="point in section.points" :key="point">
+              <li
+                v-for="point in section.points"
+                :key="point">
                 {{ point }}
               </li>
             </ul>
@@ -88,7 +94,9 @@ useSeoMeta({
           <UCard>
             <h3 class="text-base font-semibold text-highlighted">Fakta singkat</h3>
             <dl class="mt-4 space-y-4">
-              <div v-for="fact in facility.facts" :key="fact.label">
+              <div
+                v-for="fact in facility.facts"
+                :key="fact.label">
                 <dt class="text-xs font-medium uppercase tracking-wide text-muted">
                   {{ fact.label }}
                 </dt>

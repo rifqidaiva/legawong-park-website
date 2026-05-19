@@ -28,12 +28,14 @@ const featuredStats = [
 const highlightCards = [
   {
     title: "Kenali fasilitas",
-    description: "Lihat daftar tempat dan fasilitas yang ada di Taman Legawong dalam tampilan yang ringkas.",
+    description:
+      "Lihat daftar tempat dan fasilitas yang ada di Taman Legawong dalam tampilan yang ringkas.",
     icon: "i-lucide-map-pinned",
   },
   {
     title: "Buka halaman detail",
-    description: "Setiap fasilitas memiliki halaman sendiri dengan foto dan tulisan bergaya markdown.",
+    description:
+      "Setiap fasilitas memiliki halaman sendiri dengan foto dan tulisan bergaya markdown.",
     icon: "i-lucide-file-text",
   },
   {
@@ -53,31 +55,16 @@ const highlightCards = [
         },
       }">
       <UPageHero
-        title="Profil singkat Taman Legawong."
+        title="Taman Legawong."
         description="Website ini menampilkan tempat dan fasilitas di Taman Legawong secara sederhana, rapi, dan mudah dibaca. Setiap fasilitas punya halaman detail sendiri berisi foto dan deskripsi seperti artikel markdown."
         headline="Fasilitas Taman Legawong"
         orientation="horizontal"
         :links="links">
-        <UCard class="overflow-hidden rounded-3xl border border-white bg-white shadow-lg dark:bg-slate-950">
-          <div class="rounded-2xl bg-slate-950 p-6 text-white">
-            <p class="text-sm uppercase tracking-wide text-amber-300">Taman Legawong</p>
-            <p class="mt-3 text-2xl font-bold">Tempat yang ditampilkan dengan jelas</p>
-            <p class="mt-3 text-sm leading-6 text-slate-300">
-              Fokus situs ini adalah memperkenalkan fasilitas yang ada, bukan proses booking.
-              Pengunjung bisa membuka detail tiap fasilitas untuk melihat foto, ringkasan, dan
-              cerita singkatnya.
-            </p>
-            <div class="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              <div
-                v-for="stat in featuredStats"
-                :key="stat.label"
-                class="rounded-lg border border-slate-700 bg-slate-800 p-4">
-                <p class="text-2xl font-semibold">{{ stat.value }}</p>
-                <p class="mt-1 text-sm text-slate-300">{{ stat.label }}</p>
-              </div>
-            </div>
-          </div>
-        </UCard>
+        <ImageContainer>
+          <Image
+            src="https://picsum.photos/seed/panggung-angkringan-kandhang-sapi-1/900/700"
+            alt="Foto Taman Legawong" />
+        </ImageContainer>
       </UPageHero>
     </UTheme>
 
@@ -106,7 +93,9 @@ const highlightCards = [
           </template>
 
           <div class="space-y-3">
-            <UBadge color="primary" variant="soft">
+            <UBadge
+              color="primary"
+              variant="soft">
               {{ facility.badge }}
             </UBadge>
             <h2 class="text-lg font-semibold text-highlighted">
