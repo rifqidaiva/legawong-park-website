@@ -5,9 +5,9 @@ useSeoMeta({
   title: "Daftar Fasilitas | Taman Legawong",
   ogTitle: "Daftar Fasilitas | Taman Legawong",
   description:
-    "Daftar semua tempat dan fasilitas di Taman Legawong dengan foto, ringkasan, dan tautan ke halaman detail masing-masing.",
+    "Selamat menjelajahi sudut Taman Legawong. Silakan lihat detail fasilitas di bawah ini untuk merencanakan kunjungan Anda.",
   ogDescription:
-    "Daftar semua tempat dan fasilitas di Taman Legawong dengan foto, ringkasan, dan tautan ke halaman detail masing-masing.",
+    "Selamat menjelajahi sudut Taman Legawong. Silakan lihat detail fasilitas di bawah ini untuk merencanakan kunjungan Anda.",
 })
 </script>
 
@@ -15,8 +15,8 @@ useSeoMeta({
   <div>
     <UPageHeader
       class="max-w-3xl"
-      title="Daftar semua tempat dan fasilitas di Taman Legawong."
-      description="Setiap kartu mengarah ke halaman detail fasilitas yang berisi foto dan tulisan singkat seperti artikel markdown."
+      title="Tempat dan fasilitas di Taman Legawong."
+      description="Selamat menjelajahi sudut Taman Legawong. Silakan lihat detail fasilitas di bawah ini untuk merencanakan kunjungan Anda."
       headline="Daftar Fasilitas" />
 
     <div class="mt-8 grid gap-6 md:grid-cols-2">

@@ -19,12 +19,6 @@ const links = [
   },
 ] satisfies ButtonProps[]
 
-const featuredStats = [
-  { label: "Fasilitas utama", value: String(facilities.length) },
-  { label: "Tampilan", value: "Profil sederhana" },
-  { label: "Konten", value: "Foto + deskripsi" },
-]
-
 const highlightCards = [
   {
     title: "Kenali fasilitas",
@@ -55,14 +49,14 @@ const highlightCards = [
         },
       }">
       <UPageHero
-        title="Taman Legawong."
-        description="Website ini menampilkan tempat dan fasilitas di Taman Legawong secara sederhana, rapi, dan mudah dibaca. Setiap fasilitas punya halaman detail sendiri berisi foto dan deskripsi seperti artikel markdown."
-        headline="Fasilitas Taman Legawong"
+        title="Menemukan Jeda dan Cerita di Taman Legawong."
+        description="Ruang terbuka hijau yang dirancang sederhana untuk tempat berkumpul, merayakan seni, dan menikmati sajian kuliner lokal yang hangat. Jelajahi setiap sudut fasilitas kami di bawah ini."
+        headline="Taman Legawong"
         orientation="horizontal"
         :links="links">
         <ImageContainer>
           <Image
-            src="https://picsum.photos/seed/panggung-angkringan-kandhang-sapi-1/900/700"
+            src="/contents/legawong.jpg"
             alt="Foto Taman Legawong" />
         </ImageContainer>
       </UPageHero>
